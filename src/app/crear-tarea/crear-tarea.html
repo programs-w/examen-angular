@@ -38,16 +38,19 @@
     </button>
 </div>
 
-
 <!-- ZONA LOGUEADO -->
 <div *ngIf="usuarioEntrado">
     <h1>Bienvenido {{ nombre }} {{ apellidos }}</h1>
 
-    <nav id="navegador">
-        <a [routerLink]="['/']"></a>
-        <a [routerLink]="['/lista-tarea']">Lista de tareas</a>
-        <a [routerLink]="['/crear-tarea']">Crear tarea</a>
-    </nav>
 
-    <router-outlet></router-outlet>
+<h1>Crear nueva tarea</h1>
+<form #formulario="ngForm">
+    <label for="idUsuario">ID Usuario</label>
+    <input type="text" name="idUsuario" [(ngModel)]="nuevaTarea.id">
+
+    <label for="titulo">Titulo</label>
+    <textarea name="titulo" id="" [(ngModel)]="nuevaTarea.title"></textarea>
+
+    <button (click)="crearNuevaTarea()">Guardar</button>
+</form>
 </div>

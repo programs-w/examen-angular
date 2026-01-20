@@ -1,0 +1,22 @@
+<p>editar-tarea works!</p>
+<h1> Detalles de la tarea seleccionada</h1>
+<div *ngIf="tareaEditando">
+  <form #formulario="ngForm">
+    <label for="titulo">Titulo</label>
+
+    <textarea 
+      name="titulo" 
+      [(ngModel)]="tareaEditando.title" 
+      required
+      #campoTitulo="ngModel">
+    </textarea>
+
+    <!-- Mensaje de error -->
+    <p *ngIf="campoTitulo.invalid && campoTitulo.touched">
+      Campo vacío
+    </p>
+
+    <!-- Botón desactivado si el campo está vacío -->
+    <button (click)="actualizarTarea()" [disabled]="campoTitulo.invalid">Actualizar</button>
+  </form>
+</div>
